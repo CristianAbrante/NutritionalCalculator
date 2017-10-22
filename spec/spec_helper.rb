@@ -1,5 +1,6 @@
 require "bundler/setup"
 require "nutritional_calculator"
+require 'nutritional_calculator/food'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
