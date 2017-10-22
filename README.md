@@ -1,8 +1,10 @@
 # NutritionalCalculator
+## Práctica 6 de LPP (TTD con Ruby)
 
 Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/nutritional_calculator`. To experiment with that code, run `bin/console` for an interactive prompt.
 
-TODO: Delete this and the text above, and describe your gem
+### author: Cristian Abrante Dorta
+### email: alu0100945850@ull.edu.es
 
 ## Installation
 
@@ -22,7 +24,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+This gem allows users to calculate the current nutritional value (KCal) of a certain Food. For doing this, when we create a `NutritionalCalculator::Food` object we specify the amount of proteins, carbohydrate and lipids of this food. And the class has a method called `getNutritionalValue()` which calculates the amount of KCals of the food.
 
 ## Development
 

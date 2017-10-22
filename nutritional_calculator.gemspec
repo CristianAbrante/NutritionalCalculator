@@ -7,11 +7,11 @@ Gem::Specification.new do |spec|
   spec.name          = "nutritional_calculator"
   spec.version       = NutritionalCalculator::VERSION
   spec.authors       = ["Cristian Abrante"]
-  spec.email         = ["cristianabrantedorta@gmail.com"]
+  spec.email         = ["alu0100945850@ull.edu.es"]
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = %q{Librería que implementa un calculador nutricional de alimentos.}
+  spec.description   = %q{Implementación de la práctica 6 de LPP. Haciendo la clase alimento. }
+  spec.homepage      = "https://github.com/ULL-ESIT-LPP-1718/tdd-alu0100945850.git"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
