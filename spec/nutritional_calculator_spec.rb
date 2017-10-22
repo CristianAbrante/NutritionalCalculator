@@ -1,6 +1,7 @@
 require "spec_helper"
 
-RSpec.describe NutritionalCalculator do
+RSpec.describe NutritionalCalculator::Food do
 
+  
 
 end
