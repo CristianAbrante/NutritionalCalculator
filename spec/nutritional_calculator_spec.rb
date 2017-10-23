@@ -44,8 +44,10 @@ RSpec.describe NutritionalCalculator::Food do
 
   end
 
-  it "Valor del alimento formateado" do
-    expect(puts @test_food).to eq("Huevo frito -> proteínas(14.0) glúcidos(0.0) lípidos(19.5)")
+  describe "Valor del alimento formateado" do
+    it "valor formateado" do
+      expect("#{@test_food}").to eq("Huevo frito -> proteínas(14.1) glúcidos(0.0) lípidos(19.5)")
+    end
   end
 
 end

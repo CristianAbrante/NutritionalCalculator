@@ -16,6 +16,10 @@ module NutritionalCalculator
       @lipids = lipids
     end
 
+    def to_s
+      "#{@name} -> proteínas(#{@proteins}) glúcidos(#{@carbohydrates}) lípidos(#{@lipids})"
+    end
+
   end
 
 end
