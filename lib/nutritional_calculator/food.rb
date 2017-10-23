@@ -7,10 +7,13 @@ module NutritionalCalculator
     CARBOHYDRATE_VALUE = 4.0
     LIPIDS_VALUE = 9.0
 
-    attr_reader :name
+    attr_reader :name, :proteins, :carbohydrates, :lipids
 
-    def initialize(name)
+    def initialize(name, proteins, carbohydrates, lipids)
       @name = name
+      @proteins = proteins
+      @carbohydrates = carbohydrates
+      @lipids = lipids
     end
 
   end
