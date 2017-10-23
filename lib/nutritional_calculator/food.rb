@@ -20,6 +20,10 @@ module NutritionalCalculator
       "#{@name} -> proteínas(#{@proteins}) glúcidos(#{@carbohydrates}) lípidos(#{@lipids})"
     end
 
+    def get_nutritional_value
+      @proteins * PROTEINS_VALUE + @carbohydrates * CARBOHYDRATE_VALUE + @lipids * LIPIDS_VALUE
+    end
+
   end
 
 end
