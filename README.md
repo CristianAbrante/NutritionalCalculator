@@ -24,7 +24,7 @@ Or install it yourself as:
 
 ## Usage
 
-This gem allows users to calculate the current nutritional value (KCal) of a certain Food. For doing this, when we create a `NutritionalCalculator::Food` object we specify the amount of proteins, carbohydrate and lipids of this food. And the class has a method called `getNutritionalValue()` which calculates the amount of KCals of the food.
+This gem allows users to calculate the current nutritional value (KCal) of a certain Food. For doing this, when we create a `NutritionalCalculator::Food` object we specify the amount of proteins, carbohydrate and lipids of this food. And the class has a method called `get_nutritional_value()` which calculates the amount of KCals of the food.
 
 ## Development
 

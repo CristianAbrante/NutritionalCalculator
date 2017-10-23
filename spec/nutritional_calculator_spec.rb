@@ -50,4 +50,10 @@ RSpec.describe NutritionalCalculator::Food do
     end
   end
 
+  describe "Valor nutricional del alimento" do
+    it "valor nutricional" do
+      expect(@test_food.get_nutritional_value).to eq(231.9)
+    end
+  end
+
 end
