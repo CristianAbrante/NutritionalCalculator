@@ -28,7 +28,7 @@ RSpec.describe NutritionalCalculator::Food do
 
   end
 
-  describe "Almacenamiento del valor de los macronutrientes." do
+  describe "Almacenamiento y acceso del valor de los macronutrientes." do
 
     it "Valor de las proteínas" do
       expect(@test_food.proteins).to eq(14.1)
@@ -42,6 +42,10 @@ RSpec.describe NutritionalCalculator::Food do
       expect(@test_food.lipids).to eq(19.5)
     end
 
+  end
+
+  it "Valor del alimento formateado" do
+    expect(puts @test_food).to eq("Huevo frito -> proteínas(14.0) glúcidos(0.0) lípidos(19.5)")
   end
 
 end
