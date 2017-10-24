@@ -1,0 +1,5 @@
+Huevo frito   14.1 0.0 19.5
+Leche vaca     3.3 4.8  3.2
+Yogurt         0.0 4.9  3.8
+Cerdo         21.5 0.0  6.3
+Ternera       21.1 0.0  3.1
