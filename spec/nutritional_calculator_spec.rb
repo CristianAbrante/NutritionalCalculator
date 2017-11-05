@@ -88,5 +88,34 @@ RSpec.describe NutritionalCalculator::Food do
 end
 
 RSpec.describe NutritionalCalculator::LinkedList do
-  
+
+  describe NutritionalCalculator::LinkedList::Node do
+
+    before :each do
+      @node1 = NutritionalCalculator::LinkedList::Node.new("a", nil, nil)
+      @node2 = NutritionalCalculator::LinkedList::Node.new("b", nil, @node1)
+      @node3 = NutritionalCalculator::LinkedList::Node.new("c", nil, @node2)
+
+      @node1.next = @node2
+      @node2.next = @node3
+    end
+
+    it "probar el enlace al nodo anterior" do
+      expect(@node1.prev).to eq(nil)
+      expect(@node2.prev).to eq(@node1)
+      expect(@node3.prev).to eq(@node2)
+    end
+
+    it "probar el valor que contiene el nodo" do
+      expect(@node1.value).to eq("a")
+      expect(@node2.value).to eq("b")
+      expect(@node3.value).to eq("c")
+    end
+
+    it "probar el enlace al nodo posterior" do
+      expect(@node1.next).to eq(@node2)
+      expect(@node2.next).to eq(@node3)
+      expect(@node3.next).to eq(nil)
+    end
+  end
 end
