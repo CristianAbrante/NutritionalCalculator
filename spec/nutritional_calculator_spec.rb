@@ -86,3 +86,7 @@ RSpec.describe NutritionalCalculator::Food do
   end
 
 end
+
+RSpec.describe NutritionalCalculator::LinkedList do
+  
+end
