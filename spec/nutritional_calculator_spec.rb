@@ -118,4 +118,14 @@ RSpec.describe NutritionalCalculator::LinkedList do
       expect(@node3.next).to eq(nil)
     end
   end
+
+  describe NutritionalCalculator::LinkedList do
+
+    before :each do
+      value_list = NutritionalCalculator::LinkedList.new
+    end
+
+
+  end
+
 end
