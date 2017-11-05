@@ -120,9 +120,27 @@ RSpec.describe NutritionalCalculator::LinkedList do
   end
 
   describe NutritionalCalculator::LinkedList do
+
     before :each do
       value_list = NutritionalCalculator::LinkedList.new
     end
+
+    it "Inserción de un elemento por la cola" do
+      value_list.push_back 1
+      value_list.push_back 2
+      value_list.push_back 3
+
+      expect(value_list.to_s).to eq("1 <-- 2 <-- 3")
+    end
+
+    it "Inserción de un elemento por la cabeza" do
+      value_list.push_front 0
+      value_list.push_front -1
+      value_list.push_front -2
+
+      expect(value_list.to_s).to eq("-2 <-- -1 <-- 0")
+    end
+
   end
 
 end
