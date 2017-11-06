@@ -22,7 +22,48 @@ module NutritionalCalculator
       @tail = nil
     end
 
+    # ISERTION METHODS
 
+    def push_back(value)
+      if @head == nil
+        @head = Node.new(value, nil, nil)
+        @tail = @head
+      else
+        current_node = Node.new(value, nil, @tail)
+        @tail.next = current_node
+        @tail = current_node
+      end
+    end
+
+    def push_front(value)
+      if @head == nil
+        @head = Node.new(value, nil, nil)
+        @tail = @head
+      else
+        current_node = Node.new(value, @head, nil)
+        @head.prev = current_node
+        @head = current_node
+      end
+    end
+
+    # Transform method
+
+    def to_s
+      list_as_string = ""
+
+      current_node = @head
+      while current_node
+        list_as_string += "#{current_node.value}"
+
+        if current_node.next
+          list_as_string += " <-- "
+        end
+
+        current_node = current_node.next
+      end
+
+      list_as_string
+    end
 
   end
 end
