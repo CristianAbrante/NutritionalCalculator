@@ -202,7 +202,7 @@ RSpec.describe NutritionalCalculator::FoodGroup do
   context "Comprobamos la clase y jerarquía del objeto" do
 
     before :each do
-      @food1 = NutritionalCalculator::FoodGroup.new
+      @food1 = NutritionalCalculator::FoodGroup.new("Huevo Frito", 14.1, 0.0, 19.5)
     end
 
     it "El objeto creado es de la clase food" do

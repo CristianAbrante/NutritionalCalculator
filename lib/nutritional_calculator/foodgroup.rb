@@ -1,8 +1,8 @@
 
 module NutritionalCalculator
-  class FoodGroup
+  class FoodGroup < NutritionalCalculator::Food
 
-    
+
 
   end
 end
