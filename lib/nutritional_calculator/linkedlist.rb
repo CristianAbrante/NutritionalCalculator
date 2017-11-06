@@ -46,6 +46,12 @@ module NutritionalCalculator
       end
     end
 
+    def insert(*values)
+      values.each do |value|
+        push_back(value)
+      end
+    end
+
     # Transform method
 
     def to_s
