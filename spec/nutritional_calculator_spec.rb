@@ -196,3 +196,7 @@ RSpec.describe NutritionalCalculator::LinkedList do
   end
 
 end
+
+RSpec.describe NutritionalCalculator::FoodGroup do
+  
+end
