@@ -198,5 +198,22 @@ RSpec.describe NutritionalCalculator::LinkedList do
 end
 
 RSpec.describe NutritionalCalculator::FoodGroup do
-  
+
+  context "Comprobamos la clase y jerarquía del objeto" do
+
+    before :each do
+      @food1 = NutritionalCalculator::FoodGroup.new
+    end
+
+    it "El objeto creado es de la clase food" do
+      expect(@food1.class).to eq(NutritionalCalculator::FoodGroup)
+      expect(@food1.instance_of?NutritionalCalculator::FoodGroup).to eq(true)
+    end
+
+    it "El objeto creado pertenece a la jerarquía de clases Food" do
+      expect(@food1.is_a?NutritionalCalculator::Food).to eq(true)
+      expect(@food1.kind_of?NutritionalCalculator::Food).to eq(true)
+    end
+  end
+
 end
