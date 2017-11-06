@@ -98,6 +98,39 @@ module NutritionalCalculator
       end
     end
 
+    # ACCESS METHODS
+
+    def front
+      if @head
+        @head.value
+      else
+        nil
+      end
+    end
+
+    def back
+      if @tail
+        @tail.value
+      else
+        nil
+      end
+    end
+
+    def [] (pos)
+
+      current_node = @head
+      i = 0
+      while current_node and i != pos
+        current_node = current_node.next
+        i += 1
+      end
+      if current_node
+        current_node.value
+      else
+        nil
+      end
+    end
+
     # Transform method
 
     def to_s
