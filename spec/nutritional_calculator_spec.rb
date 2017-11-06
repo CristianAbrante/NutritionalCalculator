@@ -225,4 +225,43 @@ RSpec.describe NutritionalCalculator::FoodGroup do
 
   end
 
+  context "Creamos una lista grupos de alimentos" do
+
+    before :each do
+      food_group_hash = NutritionalCalculator::read_nutritional_groups 'lib/files/nutritional_group.config'
+
+      @foodgroup0 = NutritionalCalculator::LinkedList.new
+      @foodgroup1 = NutritionalCalculator::LinkedList.new
+      @foodgroup2 = NutritionalCalculator::LinkedList.new
+      @foodgroup3 = NutritionalCalculator::LinkedList.new
+      @foodgroup4 = NutritionalCalculator::LinkedList.new
+      @foodgroup5 = NutritionalCalculator::LinkedList.new
+      @foodgroup6 = NutritionalCalculator::LinkedList.new
+
+      food_group_hash.each do |foodname, foodvalues|
+
+        case foodvalues[3]
+        when "Huevos, lácteos y helados "
+          @foodgroup0.push_back(NutritionalCalculator::FoodGroup.new(foodname, foodvalues[0], foodvalues[1], foodvalues[2], foodvalues[3]))
+        when "Carnes y derivados "
+          @foodgroup1.push_back(NutritionalCalculator::FoodGroup.new(foodname, foodvalues[0], foodvalues[1], foodvalues[2], foodvalues[3]))
+        when "Pescados y mariscos "
+          @foodgroup2.push_back(NutritionalCalculator::FoodGroup.new(foodname, foodvalues[0], foodvalues[1], foodvalues[2], foodvalues[3]))
+        when "Alimentos grasos "
+          @foodgroup3.push_back(NutritionalCalculator::FoodGroup.new(foodname, foodvalues[0], foodvalues[1], foodvalues[2], foodvalues[3]))
+        when "Alimentos ricos en carbohidratos "
+          @foodgroup4.push_back(NutritionalCalculator::FoodGroup.new(foodname, foodvalues[0], foodvalues[1], foodvalues[2], foodvalues[3]))
+        when "Verduras y Hortalizas "
+          @foodgroup5.push_back(NutritionalCalculator::FoodGroup.new(foodname, foodvalues[0], foodvalues[1], foodvalues[2], foodvalues[3]))
+        when "Frutas "
+          @foodgroup6.push_back(NutritionalCalculator::FoodGroup.new(foodname, foodvalues[0], foodvalues[1], foodvalues[2], foodvalues[3]))
+        end
+
+
+      end
+
+    end
+
+  end
+
 end
