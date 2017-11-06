@@ -202,7 +202,7 @@ RSpec.describe NutritionalCalculator::FoodGroup do
   context "Comprobamos la clase y jerarquía del objeto" do
 
     before :each do
-      @food1 = NutritionalCalculator::FoodGroup.new("Huevo Frito", 14.1, 0.0, 19.5)
+      @food1 = NutritionalCalculator::FoodGroup.new("Huevo frito", 14.1, 0.0, 19.5, "Huevos, lácteos y helados")
     end
 
     it "El objeto creado es de la clase food" do
@@ -220,7 +220,7 @@ RSpec.describe NutritionalCalculator::FoodGroup do
     end
 
     it "Muestra por pantalla formateado el alimento" do
-      expect(puts @food1).to eq("Huevo frito -> proteínas(14.1) glúcidos(0.0) lípidos(19.5) grupo(Huevos, lácteos y helados)")
+      expect(@food1.to_s).to eq("Huevo frito -> proteínas(14.1) glúcidos(0.0) lípidos(19.5) grupo(Huevos, lácteos y helados)")
     end
 
   end
