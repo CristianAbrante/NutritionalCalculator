@@ -125,26 +125,53 @@ RSpec.describe NutritionalCalculator::LinkedList do
       @value_list = NutritionalCalculator::LinkedList.new
     end
 
-    it "Inserción de un elemento por la cola" do
-      @value_list.push_back 1
-      @value_list.push_back 2
-      @value_list.push_back 3
+    context "inserción de elementos" do
+      it "Inserción de un elemento por la cola" do
+        @value_list.push_back 1
+        @value_list.push_back 2
+        @value_list.push_back 3
 
-      expect(@value_list.to_s).to eq("1 <-- 2 <-- 3")
+        expect(@value_list.to_s).to eq("1 <-- 2 <-- 3")
+      end
+
+      it "Inserción de un elemento por la cabeza" do
+        @value_list.push_front 0
+        @value_list.push_front -1
+        @value_list.push_front -2
+
+        expect(@value_list.to_s).to eq("-2 <-- -1 <-- 0")
+      end
+
+      it "Inserción de varios elementos a la vez" do
+        @value_list.insert -2, -1, 0, 1, 2, 3
+
+        expect(@value_list.to_s).to eq("-2 <-- -1 <-- 0 <-- 1 <-- 2 <-- 3")
+      end
     end
 
-    it "Inserción de un elemento por la cabeza" do
-      @value_list.push_front 0
-      @value_list.push_front -1
-      @value_list.push_front -2
+    context "Extracción de elementos" do
 
-      expect(@value_list.to_s).to eq("-2 <-- -1 <-- 0")
-    end
+      before :each do
+        @value_list.insert -2, -1, 0, 1, 2, 3
+      end
 
-    it "Inserción de varios elementos a la vez" do
-      @value_list.insert -2, -1, 0, 1, 2, 3
+      it "Extracción del primer elemento de la lista" do
+        @value_list.pop_front
+        expect(@value_list.to_s).to eq("-1 <-- 0 <-- 1 <-- 2 <-- 3")
+      end
 
-      expect(@value_list.to_s).to eq("-2 <-- -1 <-- 0 <-- 1 <-- 2 <-- 3")
+      it "Extracción del último elemento de la lista" do
+        @value_list.pop_back
+        expect(@value_list.to_s).to eq("-2 <-- -1 <-- 0 <-- 1 <-- 2")
+      end
+
+      it "Extracción de un elemento dado un valor" do
+        @value_list.erase 0
+        expect(@value_list.to_s).to eq("-2 <-- -1 <-- 1 <-- 2 <-- 3")
+
+        @value_list.erase 1
+        expect(@value_list.to_s).to eq("-2 <-- -1 <-- 2 <-- 3")
+      end
     end
 
   end
