@@ -52,6 +52,52 @@ module NutritionalCalculator
       end
     end
 
+    # EXTRACTION METHODS
+
+    def pop_back
+      if @head == @tail
+        @head = @tail = nil
+      else
+        if @tail
+          @tail = @tail.prev
+          @tail.next = nil;
+        end
+      end
+    end
+
+    def pop_front
+      if @head == @tail
+        @head = @tail = nil
+      else
+        if @head
+          @head = @head.next
+          @head.prev = nil;
+        end
+      end
+    end
+
+    def erase(value)
+
+      if @head and @head.value == value
+        pop_front
+      elsif @tail and @tail.value == value
+        pop_back
+      else
+
+        current_node = @head
+        while current_node
+
+          if current_node.value == value
+            current_node.prev.next = current_node.next
+            current_node.next.prev = current_node.prev
+          end
+
+          current_node = current_node.next
+        end
+
+      end
+    end
+
     # Transform method
 
     def to_s
