@@ -262,6 +262,31 @@ RSpec.describe NutritionalCalculator::FoodGroup do
 
     end
 
+    it "Comprobamos el nombre de los alimentos" do
+      expect(@foodgroup2.front.name).to eq("Bacalao")
+      expect(@foodgroup1.back.name).to eq("Pollo")
+      expect(@foodgroup5[1].name).to eq("Cebolla")
+      expect(@foodgroup4.front.name).to eq("Azúcar")
+    end
+
+    it "Comprobamos el valor de algunos atributos" do
+      expect(@foodgroup2[1].lipids).to eq(15.5)
+      expect(@foodgroup4.front.proteins).to eq(0.0)
+      expect(@foodgroup6.back.carbohydrates).to eq(12.7)
+    end
+
+    it "Comprobamos el valor del índice calórico" do
+      expect(@foodgroup0[0].get_nutritional_value).to eq(231.9)
+      expect(@foodgroup0[1].get_nutritional_value).to eq(61.2)
+      expect(@foodgroup0[2].get_nutritional_value).to eq(69.0)
+    end
+
+    it "Impresión de las listas" do
+      puts @foodgroup0
+      puts @foodgroup1
+      puts @foodgroup2
+    end
+
   end
 
 end
