@@ -214,6 +214,15 @@ RSpec.describe NutritionalCalculator::FoodGroup do
       expect(@food1.is_a?NutritionalCalculator::Food).to eq(true)
       expect(@food1.kind_of?NutritionalCalculator::Food).to eq(true)
     end
+
+    it "Almacenamiento del grupo del alimento" do
+      expect(@food1.group).to eq("Huevos, lácteos y helados")
+    end
+
+    it "Muestra por pantalla formateado el alimento" do
+      expect(puts @food1).to eq("Huevo frito -> proteínas(14.1) glúcidos(0.0) lípidos(19.5) grupo(Huevos, lácteos y helados)")
+    end
+
   end
 
 end
