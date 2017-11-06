@@ -174,6 +174,25 @@ RSpec.describe NutritionalCalculator::LinkedList do
       end
     end
 
+    context "Acceso de elementos" do
+
+      before :each do
+        @value_list.insert -2, -1, 0, 1, 2, 3
+      end
+
+      it "Acceso al primer elemento de la lista" do
+        expect(@value_list.front).to eq(-2)
+      end
+
+      it "Acceso alúltimo elemento de la lista" do
+        expect(@value_list.back).to eq(3)
+      end
+
+      it "Acceso a un elemento dada una posición concreta" do
+        expect(@value_list[2]).to eq(0)
+      end
+    end
+
   end
 
 end
