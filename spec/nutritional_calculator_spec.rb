@@ -141,6 +141,12 @@ RSpec.describe NutritionalCalculator::LinkedList do
       expect(@value_list.to_s).to eq("-2 <-- -1 <-- 0")
     end
 
+    it "Inserción de varios elementos a la vez" do
+      @value_list.insert -2, -1, 0, 1, 2, 3
+
+      expect(@value_list.to_s).to eq("-2 <-- -1 <-- 0 <-- 1 <-- 2 <-- 3")
+    end
+
   end
 
 end
