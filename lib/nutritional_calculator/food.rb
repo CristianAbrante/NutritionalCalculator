@@ -8,6 +8,7 @@ module NutritionalCalculator
     LIPIDS_VALUE = 9.0
 
     attr_reader :name, :proteins, :carbohydrates, :lipids
+    include Comparable
 
     def initialize(name, proteins, carbohydrates, lipids)
       @name = name
@@ -24,6 +25,9 @@ module NutritionalCalculator
       @proteins * PROTEINS_VALUE + @carbohydrates * CARBOHYDRATE_VALUE + @lipids * LIPIDS_VALUE
     end
 
+    def <=> (other)
+      get_nutritional_value <=> other.get_nutritional_value
+    end
   end
 
 end

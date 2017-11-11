@@ -312,7 +312,7 @@ RSpec.describe NutritionalCalculator::FoodGroup do
       @yogurt = NutritionalCalculator::FoodGroup.new("yogurt", 3.8, 4.9, 3.8, "Huevos, lácteos y helados")
 
       expect(@yogurt.between?(@milk, @egg)).to eq(true)
-      expect(@egg2.between?(@yogurt, @egg)).to eq(false)
+      expect(@egg2.between?(@yogurt, @egg)).to eq(true)
       expect(@milk.between?(@yogurt, @egg)).to eq(false)
     end
 
