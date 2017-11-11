@@ -1,3 +1,3 @@
 module NutritionalCalculator
-  VERSION = "0.1.4"
+  VERSION = "3.1.0"
 end

@@ -193,6 +193,25 @@ RSpec.describe NutritionalCalculator::LinkedList do
       end
     end
 
+    context "Enumeración de elementos" do
+
+      before :each do
+        @value_list.insert 1,2,3,4,5
+      end
+
+      it "prueba del método each" do
+        @value_list.each {|value| puts value}
+      end
+
+      it "prueba del método map" do
+        list_array = [1,4,9,16,25]
+        a = @value_list.map { |i| i*i }
+
+        expect(list_array == a).to eq(true);
+
+      end
+    end
+
   end
 
 end
