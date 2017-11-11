@@ -289,4 +289,32 @@ RSpec.describe NutritionalCalculator::FoodGroup do
 
   end
 
+  context "Comprobamos si se pueden comparar dos alimentos" do
+    before :each do
+      @egg =  NutritionalCalculator::FoodGroup.new("Huevo Frito", 14.1, 0.0, 19.5, "Huevos, lácteos y helados")
+      @milk = NutritionalCalculator::FoodGroup.new("Leche de vaca", 3.8, 4.8, 3.2, "Huevos, lácteos y helados")
+      @egg2 = NutritionalCalculator::FoodGroup.new("Huevo Frito", 14.1, 0.0, 19.5, "Huevos, lácteos y helados")
+    end
+
+    it "Comparamos la igualdad de dos alimentos" do
+      expect(@egg == @egg2).to eq(true);
+      expect(@egg == @milk).to eq(false);
+    end
+
+    it "Comparamos si los alimentos son menores o mayores (basado en su valor nutricional)" do
+      expect(@egg < @milk).to eq(false);
+      expect(@egg > @milk).to eq(true);
+      expect(@egg <= @egg2).to eq(true);
+      expect(@egg >= @egg2).to eq(true);
+    end
+
+    it "Comparamos si los alimentos están dentro de un rango(basado en su valor nutricional)" do
+      @yogurt = NutritionalCalculator::FoodGroup.new("yogurt", 3.8, 4.9, 3.8, "Huevos, lácteos y helados")
+
+      expect(@yogurt.between?(@milk, @egg)).to eq(true)
+      expect(@egg2.between?(@yogurt, @egg)).to eq(false)
+      expect(@milk.between?(@yogurt, @egg)).to eq(false)
+    end
+
+  end
 end
