@@ -7,6 +7,8 @@ module NutritionalCalculator
 
   class LinkedList
 
+    include Enumerable;
+
     # List node structure definition.
     Node = Struct.new(:value, :next, :prev)
 
@@ -128,6 +130,14 @@ module NutritionalCalculator
         current_node.value
       else
         nil
+      end
+    end
+
+    def each
+      current_node = @head
+      while current_node
+        yield current_node.value
+        current_node = current_node.next
       end
     end
 
