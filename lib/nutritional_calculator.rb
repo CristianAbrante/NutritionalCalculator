@@ -1,6 +1,14 @@
-#require "nutritional_calculator/version"
+
+# encoding: utf-8
+# El módulo se crea para describir los distintos elementos
+# que compondrán una calculadora nutricional de alimentos.
+# Author:: Cristian Abrante (mailto: alu0100945850@ull.edu.es)
+# Copyright:: Creative Commons
+# License:: Distributed under the same license as Ruby.
 
 module NutritionalCalculator
+
+  # Método que lee la configuración del fichero.
 
   def self.read_nutritional_file(file_name)
 
@@ -33,6 +41,8 @@ module NutritionalCalculator
     return nutritional_hash
 
   end
+
+# Método que lee la configuración del fichero para un grupo de alimentos.
 
   def self.read_nutritional_groups(file_name)
 

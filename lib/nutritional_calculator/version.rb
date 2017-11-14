@@ -1,3 +1,4 @@
 module NutritionalCalculator
-  VERSION = "3.1.0"
+  # Versión actual de la gema.
+  VERSION = "3.0.0"
 end

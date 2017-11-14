@@ -1,10 +1,10 @@
 # NutritionalCalculator
-## Práctica 6 de LPP (TTD con Ruby)
+## TDD con Ruby
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/nutritional_calculator`. To experiment with that code, run `bin/console` for an interactive prompt.
+La gema nutritional_calculator nos permitirá realizar diversos cálculos nutricionales con alimentos. Es capaz de leer la información de los alimentos a través de un fichero además de permitirnos guardar dichos alimentos en una lista.
 
-### author: Cristian Abrante Dorta
-### email: alu0100945850@ull.edu.es
+##### author: Cristian Abrante Dorta
+##### email: alu0100945850@ull.edu.es
 
 ## Installation
 
@@ -24,7 +24,10 @@ Or install it yourself as:
 
 ## Usage
 
-This gem allows users to calculate the current nutritional value (KCal) of a certain Food. For doing this, when we create a `NutritionalCalculator::Food` object we specify the amount of proteins, carbohydrate and lipids of this food. And the class has a method called `get_nutritional_value()` which calculates the amount of KCals of the food.
+ESta gema permite a los usuarios calcular el valor nutricional actual (KCal) de un alimento concreto. Para hacer esto, creamos un objeto `NutritionalCalculator::Food` al que debemos especificarle los gramos de proteínas, glúcidos y lípidos que tiene. Además, la clase cuenta con un método `get_nutritional_value()` que nos permite tener acceso a este valor nutricional.
+Por otra parte, contamos con la clase  `NutritionalCalculator::FoodGroup` que además de los atributos de la clase anterior(herencia) también nos permite almacenar el grupo al que pertenece el alimento.
+
+Finalmente, contaremos con una clase que simula a una lista enlazada en la que almacenamos los alimentos `NutritionalCalculator::LinkedList`.
 
 ## Development
 
@@ -34,7 +37,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/nutritional_calculator.
+Bug reports and pull requests are welcome on GitHub at https://github.com/alu0100945850/nutritional_calculator.
 
 ## License
 

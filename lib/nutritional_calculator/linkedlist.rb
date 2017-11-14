@@ -2,17 +2,16 @@
 
 module NutritionalCalculator
 
-  # Class that represents a double
-  # linked list.
+  # Clase que representa a una lista doblemente enlazada.
 
   class LinkedList
 
     include Enumerable;
 
-    # List node structure definition.
+    # Estructura que representa a un nodo de la lista enlazada.
     Node = Struct.new(:value, :next, :prev)
 
-    # initialize an empty list
+    # Constructor que inicializa una lista vacía.
     def initialize
 
       # Atribute that represents the head
@@ -24,7 +23,10 @@ module NutritionalCalculator
       @tail = nil
     end
 
-    # ISERTION METHODS
+    # -- ISERTION METHODS
+
+    # Método que inseta un valor por la parte posterior de la lista.
+    # @param value [value] Valor que queremos insertar.
 
     def push_back(value)
       if @head == nil
@@ -37,6 +39,9 @@ module NutritionalCalculator
       end
     end
 
+    # Método que inseta un valor por la parte delantera de la lista.
+    # @param value [value] Valor que queremos insertar.
+
     def push_front(value)
       if @head == nil
         @head = Node.new(value, nil, nil)
@@ -48,13 +53,18 @@ module NutritionalCalculator
       end
     end
 
+    # Método que inserta un conjunto de valores por la parte posterior de la lista.
+    # @param values [value] conjunto de elementos que queremos insertar en la lista.
+
     def insert(*values)
       values.each do |value|
         push_back(value)
       end
     end
 
-    # EXTRACTION METHODS
+    # -- EXTRACTION METHODS
+
+    # Método que extrae el último elemento posterior de la lista
 
     def pop_back
       if @head == @tail
@@ -67,6 +77,8 @@ module NutritionalCalculator
       end
     end
 
+    # Método que extrae el primer elemento de la lista.
+
     def pop_front
       if @head == @tail
         @head = @tail = nil
@@ -77,6 +89,10 @@ module NutritionalCalculator
         end
       end
     end
+
+    # Método que busca la primera ocurrencia de un elemento en la lista
+    # y lo elimina.
+    # @param value [value] [value] Valor que pretendemos eliminar.
 
     def erase(value)
 
@@ -100,7 +116,10 @@ module NutritionalCalculator
       end
     end
 
-    # ACCESS METHODS
+    # -- ACCESS METHODS
+
+    # Método que accede al valor del primer elemento de la lista.
+    # @return [value, nil] Primer elemento de la lista.
 
     def front
       if @head
@@ -110,6 +129,9 @@ module NutritionalCalculator
       end
     end
 
+    # Método que accede al último elemento de la lista.
+    # @return [value, nil] Último elemento de la lista.
+
     def back
       if @tail
         @tail.value
@@ -117,6 +139,10 @@ module NutritionalCalculator
         nil
       end
     end
+
+    # Método que accede a un elemento dada su posición en la lista.
+    # @param pos [number] Posición del elemento en la lista.
+    # @return [value,nil] Elemento que se encuentra en la posición pos.
 
     def [] (pos)
 
@@ -133,6 +159,8 @@ module NutritionalCalculator
       end
     end
 
+    # Método que pasa a cada elemento de la lista un bloque para que se ejecute.
+
     def each
       current_node = @head
       while current_node
@@ -141,7 +169,9 @@ module NutritionalCalculator
       end
     end
 
-    # Transform method
+    # Método que transforma el objeto en un String.
+    # De esta forma será formateado por pantalla.
+    # @return [String] String con el objeto formateado.
 
     def to_s
       list_as_string = ""
