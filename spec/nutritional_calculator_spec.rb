@@ -203,13 +203,61 @@ RSpec.describe NutritionalCalculator::LinkedList do
         @value_list.each {|value| puts value}
       end
 
-      it "prueba del método map" do
+      it "prueba del método map y collect" do
         list_array = [1,4,9,16,25]
         a = @value_list.map { |i| i*i }
+        b = @value_list.collect {|i| i*i}
 
-        expect(list_array == a).to eq(true);
+        expect(list_array == a).to eq(true)
+        expect(list_array == b).to eq(true)
+      end
+
+      it "prueba del método all?" do
+        expect(@value_list.all?).to eq(true)
+
+        falsy_list = NutritionalCalculator::LinkedList.new
+        falsy_list.insert(1,2,"a", false, 5, 7)
+
+        expect(falsy_list.all?).to be(false)
+      end
+
+      it "Comprobando el método count" do
+
+        count_list = NutritionalCalculator::LinkedList.new
+        count_list.insert 2,4,1,5,2
+
+        expect(@value_list.count).to eq(5)
+        expect(count_list.count(2)).to eq(2)
+        expect(count_list.count {|i| i % 2 == 0}).to eq(3)
+      end
+
+      it "Comprobamos el método detect" do
+        expect(@value_list.detect {|i| i % 2 == 0}).to eq(2)
+        expect(@value_list.detect {|i| i % 7 == 0}).to eq(nil)
+      end
+
+      it "Comprobamos el método drop" do
+        expect(@value_list.drop(2)).to eq([3, 4, 5])
+        expect(@value_list.drop(5)).to eq([])
+      end
+
+      it "Comprobamos el método max" do
+        expect(@value_list.max).to eq(5)
+      end
+
+      it "Comprobamos el método min" do
+        expect(@value_list.min).to eq(1)
+      end
+
+      it "Comprobamos el método sort" do
+
+        unordered_list = NutritionalCalculator::LinkedList.new
+        unordered_list.insert -1, 4, 6, 0, 5, -3, 0
+
+        expect(unordered_list.sort).to eq([-3, -1, 0, 0, 4, 5, 6])
 
       end
+
     end
 
   end
