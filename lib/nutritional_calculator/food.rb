@@ -65,10 +65,18 @@ module NutritionalCalculator
 
     # Método que permite calcular el área incremental bajo la curva de las mediciones de glucosa de un alimento.
     # Se ha realizado mediante programación funcional.
-    # @param individual [int] Individuo para el cual queremos calcular el AIBC para el alimento.
+    # @param individual [int] Individuo para el cual queremos calcular el AIBC del alimento.
 
     def aibc(individual)
       (1..24).lazy.map { |i| s_value(individual, i) }.map { |j| (5.0 / 2.0) * j }.reduce('+')
+    end
+
+    # Método que calcula el índice glucémico del alimento para un individuo concreto.
+    # Se ha realizado mediante programación funcional.
+    # @param individual [int] Individuo para el cual queremos calcular el índice glucémico del alimento.
+
+    def individual_glycemic_index(individual)
+      100.0 * (aibc(individual) / @glucose.aibc(individual))
     end
 
     private
