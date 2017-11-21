@@ -16,7 +16,7 @@ module NutritionalCalculator
     # Valor nutricional de los lípidos: <b>9.0</b>
     LIPIDS_VALUE = 9.0
 
-    attr_reader :name, :proteins, :carbohydrates, :lipids
+    attr_reader :name, :proteins, :carbohydrates, :lipids, :glucose_concentration
     include Comparable
 
     # Constructor.
@@ -24,12 +24,16 @@ module NutritionalCalculator
     # @param proteins [float] Gramos de proteína que contiene el alimanto.
     # @param carbohydrates [float] Gramos de glúcidos que contiene el alimanto.
     # @param lipids [float] Gramos de lípidos que contiene el alimanto.
+    # @param glucose_concentration[Array[Array[float]]] listas de concentraciones de glucosa tras la ingesta del alimento para varios individuos.
+    # @param glucose[Food] objeto glucosa de la clase Food, necesario para hacer los cálculos. Si el valor es nulo entonces es el objeto glucosa.
 
-    def initialize(name, proteins, carbohydrates, lipids)
+    def initialize(name, proteins, carbohydrates, lipids, glucose_concentration, glucose = nil)
       @name = name
       @proteins = proteins
       @carbohydrates = carbohydrates
       @lipids = lipids
+      @glucose_concentration = glucose_concentration
+      @glucose = glucose
     end
 
     # Método que transforma el objeto en un String.

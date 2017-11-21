@@ -17,7 +17,7 @@ module NutritionalCalculator
 
     def initialize(name, proteins, carbohydrates, lipids, group)
       @group = group
-      super(name, proteins, carbohydrates, lipids)
+      super(name, proteins, carbohydrates, lipids, [[]])
     end
 
     # Método que transforma el objeto en un String.

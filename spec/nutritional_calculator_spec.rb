@@ -10,7 +10,7 @@ RSpec.describe NutritionalCalculator::Food do
     pos = 0
 
     nutritional_hash.each do |food_name, nutrients|
-      @food_vector.push(NutritionalCalculator::Food.new(food_name, nutrients[0], nutrients[1], nutrients[2]))
+      @food_vector.push(NutritionalCalculator::Food.new(food_name, nutrients[0], nutrients[1], nutrients[2], [[]]))
     end
 
   end
@@ -98,7 +98,9 @@ RSpec.describe NutritionalCalculator::Food do
     end
 
     it "El alimento puede almacenar un conjunto de valores glucémicos" do
-      expect(@apple.glucose_concentration).to not_be(nil)
+      expect(@apple.glucose_concentration).not_to be(nil)
+      expect(@yogurt.glucose_concentration).not_to be(nil)
+      expect(@chocolate.glucose_concentration).not_to be(nil)
     end
 
   end
