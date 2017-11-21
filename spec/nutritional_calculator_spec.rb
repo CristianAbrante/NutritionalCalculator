@@ -103,6 +103,18 @@ RSpec.describe NutritionalCalculator::Food do
       expect(@chocolate.glucose_concentration).not_to be(nil)
     end
 
+    it "El alimento puede calcular el AIBC para un individuo concreto" do
+      expect((27.5 - @apple.aibc(0)) < 0.01).to be(true)
+      expect((21.75 - @yogurt.aibc(0)) < 0.01).to be(true)
+      expect((7.5 - @chocolate.aibc(0)) < 0.01).to be(true)
+      expect((256.0 - @glucose.aibc(0)) < 0.01).to be(true)
+
+      expect((183.25 - @apple.aibc(1)) < 0.01).to be(true)
+      expect((138.5 - @yogurt.aibc(1)) < 0.01).to be(true)
+      expect((44.25 - @chocolate.aibc(1)) < 0.01).to be(true)
+      expect((186.5 - @glucose.aibc(1)) < 0.01).to be(true)
+    end
+
   end
 
 end
