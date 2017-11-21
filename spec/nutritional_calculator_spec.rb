@@ -115,6 +115,16 @@ RSpec.describe NutritionalCalculator::Food do
       expect((186.5 - @glucose.aibc(1)) < 0.01).to be(true)
     end
 
+    it "El alimento puede calcular el índice glucémico para un individuo" do
+      expect((10.74 - @apple.individual_glycemic_index(0)) < 0.01)
+      expect((8.496 - @yogurt.individual_glycemic_index(0)) < 0.01)
+      expect((2.93 -  @chocolate.individual_glycemic_index(0)) < 0.01)
+
+      expect((98.25 - @apple.individual_glycemic_index(1)) < 0.01)
+      expect((74.26 - @yogurt.individual_glycemic_index(1)) < 0.01)
+      expect((23.73 - @chocolate.individual_glycemic_index(1)) < 0.01)
+    end
+
   end
 
 end
