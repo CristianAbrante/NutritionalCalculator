@@ -126,9 +126,9 @@ RSpec.describe NutritionalCalculator::Food do
     end
 
     it "El alimento puede calcular el índice glucémico" do
-      assert((54.49 - @apple.glycemic_index) < 0.01)
-      assert((41.38 - @yogurt.glycemic_index) < 0.01)
-      assert((13.33 - @chocolate.glycemic_index) < 0.01)
+      expect((54.49 - @apple.glycemic_index) < 0.01).to be(true)
+      expect((41.38 - @yogurt.glycemic_index) < 0.01).to be(true)
+      expect((13.33 - @chocolate.glycemic_index) < 0.01).to be(true)
     end
 
   end

@@ -79,6 +79,12 @@ module NutritionalCalculator
       100.0 * (aibc(individual) / @glucose.aibc(individual))
     end
 
+    # Método que calcula el índice glucémico del alimento, haciendo la media del índice glucémico para los individuos.
+
+    def glycemic_index
+      (0...@glucose_concentration.size).map { |i| individual_glycemic_index(i) }.instance_eval { reduce('+') / size.to_f}
+    end
+
     private
     def s_value(individual, i)
       @glucose_concentration[individual][i] + @glucose_concentration[individual][i - 1] - 2 * @glucose_concentration[individual][0]
