@@ -62,6 +62,20 @@ module NutritionalCalculator
     def <=> (other)
       get_nutritional_value <=> other.get_nutritional_value
     end
+
+    # Método que permite calcular el área incremental bajo la curva de las mediciones de glucosa de un alimento.
+    # Se ha realizado mediante programación funcional.
+    # @param individual [int] Individuo para el cual queremos calcular el AIBC para el alimento.
+
+    def aibc(individual)
+      (1..24).lazy.map { |i| s_value(individual, i) }.map { |j| (5.0 / 2.0) * j }.reduce('+')
+    end
+
+    private
+    def s_value(individual, i)
+      @glucose_concentration[individual][i] + @glucose_concentration[individual][i - 1] - 2 * @glucose_concentration[individual][0]
+    end
+
   end
 
 end
