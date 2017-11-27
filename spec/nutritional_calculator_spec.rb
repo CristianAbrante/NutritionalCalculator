@@ -3,16 +3,7 @@ require "spec_helper"
 RSpec.describe NutritionalCalculator::Food do
 
   before :each do
-
-    nutritional_hash = NutritionalCalculator::read_nutritional_file "lib/files/nutritional_file.txt"
-
-    @food_vector = []
-    pos = 0
-
-    nutritional_hash.each do |food_name, nutrients|
-      @food_vector.push(NutritionalCalculator::Food.new(food_name, nutrients[0], nutrients[1], nutrients[2], [[]]))
-    end
-
+    @food_vector = NutritionalCalculator::get_food_vector "lib/files/nutritional_file.txt"
   end
 
   describe "Almacenamiento del nombre" do
@@ -343,7 +334,8 @@ RSpec.describe NutritionalCalculator::FoodGroup do
   context "Creamos una lista grupos de alimentos" do
 
     before :each do
-      food_group_hash = NutritionalCalculator::read_nutritional_groups 'lib/files/nutritional_group.config'
+
+      food_group_vector = NutritionalCalculator::get_food_vector 'lib/files/nutritional_group.config'
 
       @foodgroup0 = NutritionalCalculator::LinkedList.new
       @foodgroup1 = NutritionalCalculator::LinkedList.new
@@ -353,23 +345,23 @@ RSpec.describe NutritionalCalculator::FoodGroup do
       @foodgroup5 = NutritionalCalculator::LinkedList.new
       @foodgroup6 = NutritionalCalculator::LinkedList.new
 
-      food_group_hash.each do |foodname, foodvalues|
+      food_group_vector.each do |food|
 
-        case foodvalues[3]
-        when "Huevos, lácteos y helados "
-          @foodgroup0.push_back(NutritionalCalculator::FoodGroup.new(foodname, foodvalues[0], foodvalues[1], foodvalues[2], foodvalues[3]))
-        when "Carnes y derivados "
-          @foodgroup1.push_back(NutritionalCalculator::FoodGroup.new(foodname, foodvalues[0], foodvalues[1], foodvalues[2], foodvalues[3]))
-        when "Pescados y mariscos "
-          @foodgroup2.push_back(NutritionalCalculator::FoodGroup.new(foodname, foodvalues[0], foodvalues[1], foodvalues[2], foodvalues[3]))
-        when "Alimentos grasos "
-          @foodgroup3.push_back(NutritionalCalculator::FoodGroup.new(foodname, foodvalues[0], foodvalues[1], foodvalues[2], foodvalues[3]))
-        when "Alimentos ricos en carbohidratos "
-          @foodgroup4.push_back(NutritionalCalculator::FoodGroup.new(foodname, foodvalues[0], foodvalues[1], foodvalues[2], foodvalues[3]))
-        when "Verduras y Hortalizas "
-          @foodgroup5.push_back(NutritionalCalculator::FoodGroup.new(foodname, foodvalues[0], foodvalues[1], foodvalues[2], foodvalues[3]))
-        when "Frutas "
-          @foodgroup6.push_back(NutritionalCalculator::FoodGroup.new(foodname, foodvalues[0], foodvalues[1], foodvalues[2], foodvalues[3]))
+        case food.group
+        when "Huevos, lácteos y helados"
+          @foodgroup0.push_back(food)
+        when "Carnes y derivados"
+          @foodgroup1.push_back(food)
+        when "Pescados y mariscos"
+          @foodgroup2.push_back(food)
+        when "Alimentos grasos"
+          @foodgroup3.push_back(food)
+        when "Alimentos ricos en carbohidratos"
+          @foodgroup4.push_back(food)
+        when "Verduras y Hortalizas"
+          @foodgroup5.push_back(food)
+        when "Frutas"
+          @foodgroup6.push_back(food)
         end
 
 

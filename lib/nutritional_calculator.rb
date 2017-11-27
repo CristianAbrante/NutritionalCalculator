@@ -8,74 +8,42 @@
 
 module NutritionalCalculator
 
-  # Método que lee la configuración del fichero.
+  # Método que lee la configuración del fichero y devuelve un vector de los alimentos.
 
-  def self.read_nutritional_file(file_name)
+  def self.get_food_vector(file_name)
 
-    nutritional_hash = Hash.new
+    food_vector = Array.new
 
-    File.open(file_name, "r") do |f|
+    File.open(file_name, "r") do |file|
+      file.each_line do |line|
 
-      f.each_line do |line|
-        vector = line.split(" ")
-
-        if vector.length == 4
-          nutritional_hash[vector[0]] = vector[1...4].map {|value| value.to_f}
-        else
-
-          pos = 1
-          food_name = vector[0]
-
-          while vector[pos].to_f == 0.0 && vector[pos] != "#{vector[pos].to_f}"
-            food_name += " " + vector[pos]
-            pos += 1
-          end
-
-          nutritional_hash[food_name] = vector[pos...vector.length].map {|value| value.to_f}
-        end
-
-      end
-
-    end
-
-    return nutritional_hash
-
-  end
-
-# Método que lee la configuración del fichero para un grupo de alimentos.
-
-  def self.read_nutritional_groups(file_name)
-
-    nutritional_groups = Hash.new
-
-    File.open(file_name, "r") do |f|
-      f.each_line do |line|
-
-        vector = line.split(" ")
-
-        num_pos = 1
-        food_name = "#{vector[0]}"
-
-        while vector[num_pos].to_f == 0.0 && vector[num_pos] != "#{vector[num_pos].to_f}"
-          food_name += " " + "#{vector[num_pos]}"
-          num_pos += 1
-        end
-
+        check_food_name = true
+        nutritional_values = Array.new
+        food_name = ""
         food_group = ""
-        for chunk in vector[(num_pos + 3)...vector.length] do
-            food_group += "#{chunk} "
+
+        line.split(" ").each_with_index do |element, i|
+          if element.to_f == 0.0 and element != "#{element.to_f}"
+            if check_food_name
+              food_name += element + " "
+            else
+              food_group += element + " "
+            end
+          else
+            check_food_name = false
+            nutritional_values.push(element.to_f)
+          end
         end
 
-        vector_of_food = vector[num_pos...num_pos + 3].map {|value| value.to_f}
-        vector_of_food[3] = food_group
-
-        nutritional_groups[food_name] = vector_of_food
+        if food_group.empty?
+          food_vector.push(NutritionalCalculator::Food.new(food_name.chop, nutritional_values[0], nutritional_values[1], nutritional_values[2]))
+        else
+          food_vector.push(NutritionalCalculator::FoodGroup.new(food_name.chop, nutritional_values[0], nutritional_values[1], nutritional_values[2], food_group.chop))
+        end
 
       end
     end
-
-    nutritional_groups
-
+    food_vector
   end
 
 end

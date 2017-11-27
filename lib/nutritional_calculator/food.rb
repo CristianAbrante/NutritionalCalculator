@@ -27,7 +27,7 @@ module NutritionalCalculator
     # @param glucose_concentration[Array[Array[float]]] listas de concentraciones de glucosa tras la ingesta del alimento para varios individuos.
     # @param glucose[Food] objeto glucosa de la clase Food, necesario para hacer los cálculos. Si el valor es nulo entonces es el objeto glucosa.
 
-    def initialize(name, proteins, carbohydrates, lipids, glucose_concentration, glucose = nil)
+    def initialize(name, proteins, carbohydrates, lipids, glucose_concentration = nil, glucose = nil)
       @name = name
       @proteins = proteins
       @carbohydrates = carbohydrates
