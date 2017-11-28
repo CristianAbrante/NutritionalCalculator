@@ -17,5 +17,18 @@ class Array
     sorted_array
   end
 
-  
+  def sort_using_each
+    copy = []
+    self.each do |element|
+      index = (0...copy.size).bsearch { |n| copy[n] > element }
+
+      if index
+        copy.insert(index, element)
+      else
+        copy << element
+      end
+
+    end
+    copy
+  end
 end
