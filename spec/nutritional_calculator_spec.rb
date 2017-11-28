@@ -446,4 +446,15 @@ RSpec.describe NutritionalCalculator::FoodGroup do
 
   end
 
+  context "Comprobamos la eficiencia de los algoritmos de ordenación" do
+    it "Coprobación utilizando Benchmark" do
+      @food_vector = NutritionalCalculator::get_food_vector  "lib/files/nutritional_group.config"
+      Benchmark.bm do |x|
+        x.report("sort con for")   { @food_vector.sort_using_for }
+        x.report("sort con each")  { @food_vector.sort_using_each  }
+        x.report("sort de array")  { @food_vector.sort }
+      end
+    end
+  end
+
 end
