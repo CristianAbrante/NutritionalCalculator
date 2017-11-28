@@ -429,16 +429,19 @@ RSpec.describe NutritionalCalculator::FoodGroup do
 
     before :each do
       @food_vector = NutritionalCalculator::get_food_vector  "lib/files/nutritional_file.txt"
+      @sorted_vector = [@food_vector[2], @food_vector[1], @food_vector[4], @food_vector[3], @food_vector[0]]
     end
 
     it "Ordenamos de manera imperativa (blucles for)" do
-      sorted_vector = [@food_vector[2], @food_vector[1], @food_vector[4], @food_vector[3], @food_vector[0]]
-      expect(@food_vector.sort_using_for).to eq(sorted_vector)
+      expect(@food_vector.sort_using_for).to eq(@sorted_vector)
+    end
+
+    it "Ordenamos de manera funcional (utilizando each)" do
+      expect(@food_vector.sort_using_each).to eq(@sorted_vector)
     end
 
     it "Ordenamos mediante el método de la clase Array (sort)" do
-      sorted_vector = [@food_vector[2], @food_vector[1], @food_vector[4], @food_vector[3], @food_vector[0]]
-      expect(@food_vector.sort).to eq(sorted_vector)
+      expect(@food_vector.sort).to eq(@sorted_vector)
     end
 
   end
