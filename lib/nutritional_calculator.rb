@@ -1,4 +1,9 @@
 
+require 'nutritional_calculator/food'
+require 'nutritional_calculator/linkedlist'
+require 'nutritional_calculator/foodgroup'
+require 'nutritional_calculator/sort_methods'
+
 # encoding: utf-8
 # El módulo se crea para describir los distintos elementos
 # que compondrán una calculadora nutricional de alimentos.
