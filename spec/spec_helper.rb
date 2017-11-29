@@ -5,6 +5,8 @@ require 'nutritional_calculator/linkedlist'
 require 'nutritional_calculator/foodgroup'
 require 'nutritional_calculator/sort_methods'
 require 'benchmark'
+require 'coveralls'
+Coveralls.wear!
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
