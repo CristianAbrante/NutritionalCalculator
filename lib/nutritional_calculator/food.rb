@@ -85,6 +85,10 @@ module NutritionalCalculator
       (0...@glucose_concentration.size).map { |i| individual_glycemic_index(i) }.instance_eval { reduce('+') / size.to_f}
     end
 
+    def weight
+      @proteins + @carbohydrates + @lipids
+    end
+
     private
     def s_value(individual, i)
       @glucose_concentration[individual][i] + @glucose_concentration[individual][i - 1] - 2 * @glucose_concentration[individual][0]

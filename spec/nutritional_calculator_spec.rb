@@ -126,11 +126,11 @@ RSpec.describe NutritionalCalculator::Food do
 
   context "Calculo de los gramos del alimento" do
     it "gramos totales del alimento" do
-      expect(@food_vector[0].weight).to be(33.6)
-      expect(@food_vector[1].weight).to be(11.3)
-      expect(@food_vector[2].weight).to be(8.7)
-      expect(@food_vector[3].weight).to be(27.8)
-      expect(@food_vector[4].weight).to be(24.2)
+      expect((@food_vector[0].weight - 33.6) < 0.01).to be(true)
+      expect((@food_vector[1].weight - 11.3) < 0.01).to be(true)
+      expect((@food_vector[2].weight - 8.7) < 0.01).to be(true)
+      expect((@food_vector[3].weight - 27.8) < 0.01).to be(true)
+      expect((@food_vector[4].weight - 24.2) < 0.01).to be(true)
     end
   end
 
