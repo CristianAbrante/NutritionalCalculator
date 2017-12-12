@@ -3,6 +3,7 @@ require 'nutritional_calculator/food'
 require 'nutritional_calculator/linkedlist'
 require 'nutritional_calculator/foodgroup'
 require 'nutritional_calculator/sort_methods'
+require 'nutritional_calculator/plate'
 
 # encoding: utf-8
 # El módulo se crea para describir los distintos elementos
