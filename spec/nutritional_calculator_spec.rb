@@ -124,6 +124,16 @@ RSpec.describe NutritionalCalculator::Food do
 
   end
 
+  context "Calculo de los gramos del alimento" do
+    it "gramos totales del alimento" do
+      expect(@food_vector[0].weight).to be(33.6)
+      expect(@food_vector[1].weight).to be(11.3)
+      expect(@food_vector[2].weight).to be(8.7)
+      expect(@food_vector[3].weight).to be(27.8)
+      expect(@food_vector[4].weight).to be(24.2)
+    end
+  end
+
 end
 
 RSpec.describe NutritionalCalculator::LinkedList do
