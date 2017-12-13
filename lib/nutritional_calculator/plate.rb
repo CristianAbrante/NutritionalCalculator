@@ -10,8 +10,24 @@ module NutritionalCalculator
     # Fichero donde se encuentra la base da datos de alimentos
     DATABASE_FILE = "lib/files/food_database.config"
 
+    # Unidades
+
+    PIECE = 50.0
+    SLICE = 60.0
+    PINCH = 2.0
+    DRIBBLE = 1.5
+    LITRE = 1000.0
+    CENTILITRE = 10.0
+    CUP = 20.0
+    SPOON = 1.0
+
+    # Multiplicadores
+
+    BIG = 1.5
+    SMALL = 0.5
+
     # Atributos que podremos leer
-    attr_reader :name, :food_database, :vegetables, :fruits, :cereals, :proteins, :oils, :drinks
+    attr_reader :name, :food_database, :vegetables, :fruits, :cereals, :proteins, :oils, :drinks, :nutritional_value
 
     # Constructor de la clase
     # @param name [string] nombre que tendrá el plato
@@ -25,6 +41,8 @@ module NutritionalCalculator
       @proteins = {}
       @oils = {}
       @drinks = {}
+
+      @nutritional_value = 0.0
 
       if block_given?
         if block.arity == 1
@@ -104,6 +122,72 @@ module NutritionalCalculator
       when "drink"
         @drinks[food_name] = str_amount
       end
+
+      gr_amount = str_amount_2_gr_amount(str_amount)
+      @nutritional_value += calculate_nutritional_value(food_name, gr_amount)
+    end
+
+    def calculate_nutritional_value(food_name, gr_amount)
+      food = @food_database[food_name]
+      if !food.nil?
+        (food.get_nutritional_value * gr_amount) / food.weight
+      else
+        0.0
+      end
+    end
+
+    def str_amount_2_gr_amount(str_amount)
+
+      quantity = str_amount.split(" ").shift.to_r.to_f  # Obtaining multiplier float
+      str_unit = str_amount.split(" ").drop(1).join(" ")    # Obtaning name of the unit
+
+      gr_unit = 0.0
+
+      case str_unit
+      when "g", "gr", "gramo","gramos"
+        gr_unit = 1.0
+      when "kg", "kilos", "kilogramos"
+        gr_unit = 1000.0
+      when"l", "litros"
+        gr_unit = LITRE
+      when "cl", "centilitros"
+        gr_unit = LITRE
+      end
+
+      if !/piez/.match(str_unit).nil?
+        gr_unit = PIECE
+      end
+      if !/rodaj/.match(str_unit).nil?
+        gr_unit = SLICE
+      end
+      if !/troz/.match(str_unit).nil?
+        gr_unit = SLICE
+      end
+      if !/taz/.match(str_unit).nil?
+        gr_unit = CUP
+      end
+      if !/cuchar/.match(str_unit).nil?
+        gr_unit = SPOON
+      end
+      if !/pizca/.match(str_unit).nil?
+        gr_unit = PINCH
+      end
+      if !/chorr/.match(str_unit).nil?
+        gr_unit = DRIBBLE
+      end
+
+      # In case unit has multiplicator
+      # Unit must be multiplied by the small multiplicator.
+      if !/pequeñ/.match(str_unit).nil?
+        gr_unit * SMALL
+      end
+      # Unit must be multiplied by the big multiplicator.
+      if !/grand/.match(str_unit).nil?
+        gr_unit * BIG
+      end
+
+      quantity * gr_unit
+
     end
   end
 end
