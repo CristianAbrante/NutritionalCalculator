@@ -102,4 +102,17 @@ RSpec.describe NutritionalCalculator::Plate do
       expect((@test_plate.nutritional_value - 982.3434) < 0.01).to eq(true)
     end
   end
+
+  context "Mostrar por pantalla el plato" do
+    @test_plate = NutritionalCalculator::Plate.new("Lentejas con arroz, salsa de tomate, huevo y plátano a la plancha") do
+      vegetable "Tomate", :amount => "2 piezas"
+      fruit "Plátano", :amount => "20 gr"
+      cereal "Arroz", :amount => "1 taza grande"
+      protein "Lentejas", :amount => "1/2 taza"
+      oil "Aceite de oliva", :amount => "1 chorrito"
+      drink "agua", :amount => "1 litro"
+    end
+
+    puts @test_plate.to_s
+  end
 end

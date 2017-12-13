@@ -80,6 +80,107 @@ module NutritionalCalculator
         add_food_to_plate("drink", food_name, quantity[:amount]) if(quantity[:amount])
     end
 
+    def to_s
+      output = @name
+      output << "\n#{'=' * @name.size}\n\n"
+      output << "Composición nutricional:\n\n"
+      output << "Alimento".ljust(20) << "categoría".ljust(10)
+      output << "proteínas".ljust(10) << "glúcidos".ljust(10) << "lípidos".ljust(10)
+      output << "Valor nutricional".ljust(20) <<"Valor nutricional total".ljust(25) << "cantidad".ljust(20) <<  "\n"
+      output << "#{'-' * 127}\n"
+
+
+      @vegetables.each do |name, amount|
+        output << name.ljust(20)
+        output << "vegetales".ljust(10)
+        if @food_database[name]
+          output << @food_database[name].proteins.to_s.ljust(10)
+          output << @food_database[name].carbohydrates.to_s.ljust(10)
+          output << @food_database[name].lipids.to_s.ljust(10)
+          output << @food_database[name].get_nutritional_value.round(4).to_s.ljust(20)
+          output << calculate_nutritional_value(name, str_amount_2_gr_amount(amount)).round(4).to_s.ljust(25)
+          output << amount.ljust(15) << str_amount_2_gr_amount(amount).round(2).to_s.ljust(4) << " g"
+        end
+        output << "\n"
+      end
+
+
+      @fruits.each do |name, amount|
+        output << name.ljust(20)
+        output << "frutas".ljust(10)
+        if @food_database[name]
+          output << @food_database[name].proteins.to_s.ljust(10)
+          output << @food_database[name].carbohydrates.to_s.ljust(10)
+          output << @food_database[name].lipids.to_s.ljust(10)
+          output << @food_database[name].get_nutritional_value.round(4).to_s.ljust(20)
+          output << calculate_nutritional_value(name, str_amount_2_gr_amount(amount)).round(4).to_s.ljust(25)
+          output << amount.ljust(15) << str_amount_2_gr_amount(amount).round(2).to_s.ljust(4) << " g"
+        end
+        output << "\n"
+      end
+
+      @cereals.each do |name, amount|
+        output << name.ljust(20)
+        output << "cereales".ljust(10)
+        if @food_database[name]
+          output << @food_database[name].proteins.to_s.ljust(10)
+          output << @food_database[name].carbohydrates.to_s.ljust(10)
+          output << @food_database[name].lipids.to_s.ljust(10)
+          output << @food_database[name].get_nutritional_value.round(4).to_s.ljust(20)
+          output << calculate_nutritional_value(name, str_amount_2_gr_amount(amount)).round(4).to_s.ljust(25)
+          output << amount.ljust(15) << str_amount_2_gr_amount(amount).round(2).to_s.ljust(4) << " g"
+        end
+        output << "\n"
+      end
+
+      @proteins.each do |name, amount|
+        output << name.ljust(20)
+        output << "proteínas".ljust(10)
+        if @food_database[name]
+          output << @food_database[name].proteins.to_s.ljust(10)
+          output << @food_database[name].carbohydrates.to_s.ljust(10)
+          output << @food_database[name].lipids.to_s.ljust(10)
+          output << @food_database[name].get_nutritional_value.round(4).to_s.ljust(20)
+          output << calculate_nutritional_value(name, str_amount_2_gr_amount(amount)).round(4).to_s.ljust(25)
+          output << amount.ljust(15) << str_amount_2_gr_amount(amount).round(2).to_s.ljust(4) << " g"
+        end
+        output << "\n"
+      end
+
+      @oils.each do |name, amount|
+        output << name.ljust(20)
+        output << "aceites".ljust(10)
+        if @food_database[name]
+          output << @food_database[name].proteins.to_s.ljust(10)
+          output << @food_database[name].carbohydrates.to_s.ljust(10)
+          output << @food_database[name].lipids.to_s.ljust(10)
+          output << @food_database[name].get_nutritional_value.round(4).to_s.ljust(20)
+          output << calculate_nutritional_value(name, str_amount_2_gr_amount(amount)).round(4).to_s.ljust(25)
+          output << amount.ljust(15) << str_amount_2_gr_amount(amount).round(2).to_s.ljust(4) << " g"
+        end
+        output << "\n"
+      end
+
+      @drinks.each do |name, amount|
+        output << name.ljust(20)
+        output << "bebidas".ljust(10)
+        if @food_database[name]
+          output << @food_database[name].proteins.to_s.ljust(10)
+          output << @food_database[name].carbohydrates.to_s.ljust(10)
+          output << @food_database[name].lipids.to_s.ljust(10)
+          output << @food_database[name].get_nutritional_value.round(4).to_s.ljust(20)
+          output << calculate_nutritional_value(name, str_amount_2_gr_amount(amount)).round(4).to_s.ljust(25)
+          output << amount.ljust(15) << str_amount_2_gr_amount(amount).round(2).to_s.ljust(5) << " g"
+        end
+        output << "\n"
+      end
+
+      output << "\n"
+      output << "Valor nutricional del plato > #{@nutritional_value.round(4)}"
+
+      output
+    end
+
     private
 
     # Método que lee la base da datos desde el fichero
