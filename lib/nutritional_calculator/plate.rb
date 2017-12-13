@@ -15,7 +15,7 @@ module NutritionalCalculator
 
     # Constructor de la clase
     # @param name [string] nombre que tendrá el plato
-    def initialize(name)
+    def initialize(name, &block)
       @name = name
       @food_database = read_food_database(DATABASE_FILE)
 
@@ -25,6 +25,15 @@ module NutritionalCalculator
       @proteins = {}
       @oils = {}
       @drinks = {}
+
+      if block_given?
+        if block.arity == 1
+          yield self
+        else
+         instance_eval(&block)
+        end
+      end
+
     end
 
     # Métodos para añadir elementos a las partes del plato.

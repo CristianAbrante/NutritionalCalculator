@@ -52,12 +52,12 @@ RSpec.describe NutritionalCalculator::Plate do
 
     it "El alimento debe poder almacenar los datos si lo pasamos como bloque" do
       test_plate_2 = NutritionalCalculator::Plate.new("prueba2") do |a|
-        vegetable "Tomate", :amount => "2 piezas"
-        fruit "Plátano", :amount => "20 gr"
-        cereal "Arroz", :amount => "1 taza grande"
-        protein "Lentejas", :amount => "1/2 taza"
-        oil "Aceite de oliva", :amount => "1 chorrito"
-        drink "agua", :amount => "1 litro"
+        a.vegetable "Tomate", :amount => "2 piezas"
+        a.fruit "Plátano", :amount => "20 gr"
+        a.cereal "Arroz", :amount => "1 taza grande"
+        a.protein "Lentejas", :amount => "1/2 taza"
+        a.oil "Aceite de oliva", :amount => "1 chorrito"
+        a.drink "agua", :amount => "1 litro"
       end
 
       expect(test_plate_2.vegetables["Tomate"]).to eq("2 piezas")
@@ -66,6 +66,23 @@ RSpec.describe NutritionalCalculator::Plate do
       expect(test_plate_2.proteins["Lentejas"]).to eq("1/2 taza")
       expect(test_plate_2.oils["Aceite de oliva"]).to eq("1 chorrito")
       expect(test_plate_2.drinks["agua"]).to eq("1 litro")
+
+      test_plate_3 = NutritionalCalculator::Plate.new("prueba3") do
+        vegetable "Tomate", :amount => "2 piezas"
+        fruit "Plátano", :amount => "20 gr"
+        cereal "Arroz", :amount => "1 taza grande"
+        protein "Lentejas", :amount => "1/2 taza"
+        oil "Aceite de oliva", :amount => "1 chorrito"
+        drink "agua", :amount => "1 litro"
+      end
+
+      expect(test_plate_3.vegetables["Tomate"]).to eq("2 piezas")
+      expect(test_plate_3.fruits["Plátano"]).to eq("20 gr")
+      expect(test_plate_3.cereals["Arroz"]).to eq("1 taza grande")
+      expect(test_plate_3.proteins["Lentejas"]).to eq("1/2 taza")
+      expect(test_plate_3.oils["Aceite de oliva"]).to eq("1 chorrito")
+      expect(test_plate_3.drinks["agua"]).to eq("1 litro")
+
     end
   end
 end
