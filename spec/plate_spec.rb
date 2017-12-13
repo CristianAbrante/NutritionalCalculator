@@ -85,4 +85,21 @@ RSpec.describe NutritionalCalculator::Plate do
 
     end
   end
+
+  context "Calculo del valor nutricional total" do
+    before :each do
+      @test_plate = NutritionalCalculator::Plate.new("prueba3") do
+        vegetable "Tomate", :amount => "2 piezas"
+        fruit "Plátano", :amount => "20 gr"
+        cereal "Arroz", :amount => "1 taza grande"
+        protein "Lentejas", :amount => "1/2 taza"
+        oil "Aceite de oliva", :amount => "1 chorrito"
+        drink "agua", :amount => "1 litro"
+      end
+    end
+
+    it "Calculo del valor nutricional total del plato" do
+      expect((@test_plate.nutritional_value - 982.3434) < 0.01).to eq(true)
+    end
+  end
 end
